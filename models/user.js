@@ -1,4 +1,4 @@
-'use strict';
+'use strict'
 const { Model } = require('sequelize')
 
 module.exports = (sequelize, DataTypes) => {
@@ -9,14 +9,14 @@ module.exports = (sequelize, DataTypes) => {
     name: DataTypes.STRING,
     avatar: DataTypes.STRING,
     introduction: DataTypes.TEXT,
-    role: DataTypes.STRING,
+    role: DataTypes.STRING
   }, {
     sequelize,
     modelName: 'User',
     tableName: 'Users',
     underscored: true
-  });
-  User.associate = function(models) {
+  })
+  User.associate = function (models) {
     User.hasMany(models.Tweet, { foreignKey: 'userId' })
     User.hasMany(models.Reply, { foreignKey: 'userId' })
     User.hasMany(models.Like, { foreignKey: 'userId' })
@@ -30,6 +30,6 @@ module.exports = (sequelize, DataTypes) => {
       foreignKey: 'followerId',
       as: 'Followings'
     })
-  };
-  return User;
-};
+  }
+  return User
+}
